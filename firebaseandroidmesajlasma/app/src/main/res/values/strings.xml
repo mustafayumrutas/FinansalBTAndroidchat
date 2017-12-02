@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Firebaseandroidchat</string>
+    <string name="startactivity">StartActivity</string>
+    <string name="uye_ol">Uye ol</string>
 </resources>
