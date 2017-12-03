@@ -1,5 +1,6 @@
 package com.example.odev.firebaseandroidchat;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
@@ -24,7 +25,10 @@ public class RegisterActivity extends AppCompatActivity {
     private Button mCreateBtn;
     //Firebase Giris
     private FirebaseAuth mAuth;
+    //toolbar
     private Toolbar mToolbar;
+    //bekleme kısmı
+    private ProgressDialog mRegProgress;
 
 
     @Override
@@ -44,7 +48,9 @@ public class RegisterActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Hesap olustur");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        
+
+        //Bekleme kısmı
+        mRegProgress = new ProgressDialog(this);
 
         mCreateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
