@@ -2,4 +2,8 @@
     <string name="app_name">Firebaseandroidchat</string>
     <string name="startactivity">StartActivity</string>
     <string name="uye_ol">Uye ol</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="hesap_olustur">hesap olustur</string>
+    <string name="display_name">Display Name</string>
 </resources>
