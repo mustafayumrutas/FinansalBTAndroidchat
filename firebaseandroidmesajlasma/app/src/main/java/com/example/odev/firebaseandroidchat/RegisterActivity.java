@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,18 +22,30 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputLayout mEmail;
     private TextInputLayout mPassword;
     private Button mCreateBtn;
+    //Firebase Giris
     private FirebaseAuth mAuth;
+    private Toolbar mToolbar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        //Firebase auth
         mAuth = FirebaseAuth.getInstance();
+        //Android alanlari
         mDisplayName =(TextInputLayout) findViewById(R.id.reg_display_name);
         mCreateBtn =(Button) findViewById(R.id.reg_create_btn);
         mEmail =(TextInputLayout) findViewById(R.id.reg_email);
         mPassword=(TextInputLayout) findViewById(R.id.reg_password);
+
+        //Toolbar
+        mToolbar=(Toolbar) findViewById(R.id.register_toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setTitle("Hesap olustur");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        
+
         mCreateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
