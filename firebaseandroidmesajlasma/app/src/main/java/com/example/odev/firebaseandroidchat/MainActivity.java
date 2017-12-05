@@ -1,11 +1,14 @@
 package com.example.odev.firebaseandroidchat;
 
 import android.content.Intent;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TableLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -13,6 +16,11 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private android.support.v7.widget.Toolbar mToolbar;
+
+    private ViewPager mViewPager;
+    private SectionsPagerAdapter mSectionsPagerAdapter;
+
+    private TabLayout mTabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Mesajlasmaasdas");
+
+        //Fragmentler
+        mViewPager = (ViewPager) findViewById(R.id.main_tabPager);
+        mSectionsPagerAdapter=new SectionsPagerAdapter(getSupportFragmentManager());
+
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        mTabLayout=(TabLayout) findViewById(R.id.main_tabs);
+        mTabLayout.setupWithViewPager(mViewPager);
 
     }
     @Override

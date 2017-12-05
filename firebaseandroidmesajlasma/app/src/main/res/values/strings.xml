@@ -8,4 +8,7 @@
     <string name="cikis_yap">Cikis yap</string>
     <string name="hesab_na_giris_yap">Hesabına Giris Yap</string>
     <string name="giris_yap">Giris Yap</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
