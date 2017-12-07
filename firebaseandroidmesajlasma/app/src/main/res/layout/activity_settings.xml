@@ -4,38 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorPrimaryDark"
     tools:context="com.example.odev.firebaseandroidchat.SettingsActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/settings_image"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:src="@drawable/defaultavatar" />
 
     <Button
         android:id="@+id/settings_image_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="@android:dimen/thumbnail_height"
         android:layout_height="wrap_content"
         android:layout_above="@+id/settings_status_btn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
-        android:text="Profil Resmini Değiştir"
-        android:textColor="@color/colorPrimary" />
+        android:text="Profil Resmini Degistir"
+        android:textColor="@color/colorPrimaryDark" />
 
     <Button
         android:id="@+id/settings_status_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="@android:dimen/thumbnail_width"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/settings_display_name"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="Durumu Değiştir"
+        android:text="Durumu degistir"
         android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
     <TextView
@@ -44,7 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Display Name"
+        android:gravity="center"
+        android:text=" Display"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="24sp" />
 
@@ -54,8 +55,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/settings_display_name"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp"
-        android:text="Merhaba Firebase chat app kullanıyorum"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="@string/merhaba_firebase_chat_app_kullan_yorum"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="18sp" />
 </RelativeLayout>

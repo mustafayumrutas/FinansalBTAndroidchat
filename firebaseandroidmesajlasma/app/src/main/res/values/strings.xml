@@ -11,4 +11,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="durumu_de_i_tir">Durumu Değiştir</string>
+    <string name="merhaba_firebase_chat_app_kullan_yorum">Merhaba Firebase chat app kullanıyorum</string>
 </resources>

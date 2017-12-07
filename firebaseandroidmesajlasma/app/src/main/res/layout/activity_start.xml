@@ -14,29 +14,33 @@
         android:layout_above="@+id/start_reg_btn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
+        android:gravity="center"
         android:text="Firebase Chat App"
         android:textColor="@android:color/white"
         android:textColorHighlight="@android:color/holo_green_dark"
-        android:textSize="25sp" />
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/start_reg_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="@android:dimen/thumbnail_width"
         android:layout_height="wrap_content"
         android:layout_above="@+id/start_login_btn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/colorAccent"
         android:text="@string/uye_ol"
-        android:textColor="@android:color/background_light" />
+        android:textColor="@android:color/background_light"
+        android:textSize="20sp"
+        android:textStyle="normal|bold" />
 
     <Button
         android:id="@+id/start_login_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="@android:dimen/thumbnail_width"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/start_reg_btn"
         android:layout_marginBottom="100dp"
         android:text="Giris yap"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp" />
 </RelativeLayout>
