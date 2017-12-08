@@ -37,7 +37,8 @@ public class StatusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
-        //yükleme
+        //settingsten gelen string
+        String status_value=getIntent().getStringExtra("status_value");
 
         //firebase
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -51,6 +52,8 @@ public class StatusActivity extends AppCompatActivity {
 
         mStatus =(TextInputLayout)findViewById(R.id.status_input);
         mSavebtn =(Button) findViewById(R.id.status_save_btn);
+
+        mStatus.getEditText().setText(status_value);
 
         mSavebtn.setOnClickListener(new View.OnClickListener() {
             @Override
