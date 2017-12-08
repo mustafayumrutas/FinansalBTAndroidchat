@@ -24,6 +24,7 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SettingsActivity" />
+<<<<<<< HEAD
         <activity
             android:name=".StatusActivity"
             android:parentActivityName=".SettingsActivity"></activity>
@@ -32,6 +33,17 @@
             android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
         <activity android:name=".UsersActivity"
             android:parentActivityName=".MainActivity"></activity>
+||||||| 8285938... Ayarlar kısmı tamamen bitti.Resim ve Durum değişikliği yapılabiliyor
+        <activity android:name=".StatusActivity"
+            android:parentActivityName=".SettingsActivity">
+        </activity>
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/> <!-- optional (needed if default theme has no action bar) -->
+=======
+        <activity android:name=".StatusActivity"
+            android:parentActivityName=".SettingsActivity">
+        </activity>
+>>>>>>> parent of 8285938... Ayarlar kısmı tamamen bitti.Resim ve Durum değişikliği yapılabiliyor
     </application>
 
 </manifest>
