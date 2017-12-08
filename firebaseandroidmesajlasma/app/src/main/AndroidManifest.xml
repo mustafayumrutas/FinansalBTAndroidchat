@@ -26,13 +26,11 @@
         <activity android:name=".SettingsActivity" />
         <activity
             android:name=".StatusActivity"
-            android:parentActivityName=".SettingsActivity" />
+            android:parentActivityName=".SettingsActivity"></activity>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
 
-        <activity android:name=".UsersActivity"
-            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
