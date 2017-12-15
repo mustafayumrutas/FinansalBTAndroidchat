@@ -83,9 +83,9 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 final String name =dataSnapshot.child("name").getValue().toString();
-                String image =dataSnapshot.child("image").child("image").getValue().toString();
+                String image =dataSnapshot.child("image").getValue().toString();
                 String status=dataSnapshot.child("status").getValue().toString();
-                String thump_image=dataSnapshot.child("image").child("thumb_image").getValue().toString();
+                String thump_image=dataSnapshot.child("image").getValue().toString();
 
                 sName.setText(name);
                 sStatus.setText(status);
@@ -166,7 +166,7 @@ public class SettingsActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             final String download_url=task.getResult().getDownloadUrl().toString();
                             String profile=mAuth.getCurrentUser().getUid();
-                            mDatabase=FirebaseDatabase.getInstance().getReference().child("Users").child(profile).child("image");
+                            mDatabase=FirebaseDatabase.getInstance().getReference().child("Users").child(profile);
                             UploadTask uploadTask = thumb_filepath.putBytes(thumb_byte);
                             uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                                 @Override
