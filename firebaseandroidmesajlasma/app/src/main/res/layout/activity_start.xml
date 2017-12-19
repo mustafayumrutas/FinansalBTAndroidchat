@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:gravity="center"
-        android:text="Firebase Chat App"
+        android:text="ChatFire Mesajlasma uygulaması"
         android:textColor="@android:color/white"
         android:textColorHighlight="@android:color/holo_green_dark"
         android:textSize="30sp" />
@@ -40,6 +40,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/start_reg_btn"
         android:layout_marginBottom="100dp"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
         android:text="Giris yap"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp" />

@@ -79,7 +79,6 @@ public class ProfileActivity extends AppCompatActivity {
         mProfileImage = (ImageView) findViewById(R.id.profile_image);
         mProfileName = (TextView) findViewById(R.id.profile_displayName);
         mProfileStatus = (TextView) findViewById(R.id.profile_status);
-        mProfileFriendsCount = (TextView) findViewById(R.id.profile_totalFriends);
         mProfileSendReqBtn =(Button) findViewById(R.id.profile_send_req_btn);
         mDeclineBtn= (Button) findViewById(R.id.profile_dec_friend_req);
 
@@ -90,8 +89,8 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         mProgressDialog = new ProgressDialog(this);
-        mProgressDialog.setTitle("Loading User Data");
-        mProgressDialog.setMessage("Please wait while we load the user data");
+        mProgressDialog.setTitle("Yükleniyor");
+        mProgressDialog.setMessage("Lütfen bekleyiniz");
         mProgressDialog.setCanceledOnTouchOutside(false);
         mProgressDialog.show();
 
@@ -128,7 +127,7 @@ public class ProfileActivity extends AppCompatActivity {
                             if(req_type.equals("received")){
 
                                 mCurrent_state="req_received";
-                                mProfileSendReqBtn.setText("Accept Friend Request");
+                                mProfileSendReqBtn.setText("Arkadaslik istegini kabul et");
 
                                 mDeclineBtn.setVisibility(View.VISIBLE);
                                 mDeclineBtn.setEnabled(true);
@@ -136,7 +135,7 @@ public class ProfileActivity extends AppCompatActivity {
                             }else if(req_type.equals("sent")){
 
                                 mCurrent_state="req_sent";
-                                mProfileSendReqBtn.setText("Cancel Friend Request");
+                                mProfileSendReqBtn.setText("Arkadaslik istegini reddet");
 
                                 mDeclineBtn.setVisibility(View.INVISIBLE);
                                 mDeclineBtn.setEnabled(false);
@@ -153,7 +152,7 @@ public class ProfileActivity extends AppCompatActivity {
                                     if(dataSnapshot.hasChild(user_id)){
 
                                         mCurrent_state="friends";
-                                        mProfileSendReqBtn.setText("Unfriend this Person");
+                                        mProfileSendReqBtn.setText("Arkadasliktan cikar");
 
                                         mDeclineBtn.setVisibility(View.INVISIBLE);
                                         mDeclineBtn.setEnabled(false);
@@ -217,6 +216,7 @@ public class ProfileActivity extends AppCompatActivity {
                     Map requestMap = new HashMap();
                     requestMap.put("Friend_req/"+mCurrent_user.getUid()+"/"+user_id+"/request_type","sent");
                     requestMap.put("Friend_req/"+user_id+"/"+mCurrent_user.getUid()+"/request_type","received");
+                    requestMap.put("Requests/"+user_id+"/"+mCurrent_user.getUid()+"/request_type","true");
                     requestMap.put("notifications/"+user_id+"/"+newNotificationId,notificationData);
 
                     mRootRef.updateChildren(requestMap, new DatabaseReference.CompletionListener() {
@@ -225,13 +225,13 @@ public class ProfileActivity extends AppCompatActivity {
 
                             if(databaseError!=null){
 
-                                Toast.makeText(ProfileActivity.this,"There was some error in sending request",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ProfileActivity.this,"Gönderirken bir hata ile karşılaşıldı",Toast.LENGTH_SHORT).show();
 
                             }
 
                             mProfileSendReqBtn.setEnabled(true);
                             mCurrent_state="req_sent";
-                            mProfileSendReqBtn.setText("Cancel Friend Request");
+                            mProfileSendReqBtn.setText("Arkadaslik istegini reddet");
 
 
 
@@ -256,7 +256,7 @@ public class ProfileActivity extends AppCompatActivity {
                             if (databaseError==null){
                                 mProfileSendReqBtn.setEnabled(true);
                                 mCurrent_state="not_friends";
-                                mProfileSendReqBtn.setText("Send Friend Request");
+                                mProfileSendReqBtn.setText("Arkadaslik istegi gönder");
 
                                 mDeclineBtn.setVisibility(View.INVISIBLE);
                                 mDeclineBtn.setEnabled(false);
@@ -283,6 +283,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                     friendsMap.put("Friend_req/"+mCurrent_user.getUid()+"/"+user_id,null);
                     friendsMap.put("Friend_req/"+user_id+"/"+mCurrent_user.getUid(),null);
+                    friendsMap.put("Requests/"+mCurrent_user.getUid()+"/"+user_id,null);
 
                     mRootRef.updateChildren(friendsMap, new DatabaseReference.CompletionListener() {
                         @Override
@@ -290,7 +291,7 @@ public class ProfileActivity extends AppCompatActivity {
                             if (databaseError==null){
                                 mProfileSendReqBtn.setEnabled(true);
                                 mCurrent_state="friends";
-                                mProfileSendReqBtn.setText("Unfriend this person");
+                                mProfileSendReqBtn.setText("Arkadasliktan cikar");
 
                                 mDeclineBtn.setVisibility(View.INVISIBLE);
                                 mDeclineBtn.setEnabled(false);
@@ -311,6 +312,12 @@ public class ProfileActivity extends AppCompatActivity {
                     Map unfriendMap = new HashMap();
                     unfriendMap.put("Friends/"+mCurrent_user.getUid()+"/"+user_id,null);
                     unfriendMap.put("Friends/"+user_id+"/"+mCurrent_user.getUid(),null);
+                    unfriendMap.put("messages/"+user_id+"/"+mCurrent_user.getUid(),null);
+                    unfriendMap.put("messages/"+mCurrent_user.getUid()+"/"+user_id,null);
+                    unfriendMap.put("Chat/"+user_id+"/"+mCurrent_user.getUid(),null);
+                    unfriendMap.put("Chat/"+mCurrent_user.getUid()+"/"+user_id,null);
+                    unfriendMap.put("Chat/"+user_id+"/"+mCurrent_user.getUid(),null);
+                    unfriendMap.put("Chat/"+mCurrent_user.getUid()+"/"+user_id,null);
 
                     mRootRef.updateChildren(unfriendMap, new DatabaseReference.CompletionListener() {
                         @Override
@@ -318,7 +325,7 @@ public class ProfileActivity extends AppCompatActivity {
                             if (databaseError==null){
 
                                 mCurrent_state="not_friends";
-                                mProfileSendReqBtn.setText("Send Friend Request");
+                                mProfileSendReqBtn.setText("Arkadaslik istegi gönder");
 
                                 mDeclineBtn.setVisibility(View.INVISIBLE);
                                 mDeclineBtn.setEnabled(false);
@@ -345,13 +352,14 @@ public class ProfileActivity extends AppCompatActivity {
                 Map decMap = new HashMap();
                 decMap.put("Friend_req/"+mCurrent_user.getUid()+"/"+user_id,null);
                 decMap.put("Friend_req/"+user_id+"/"+mCurrent_user.getUid(),null);
+                decMap.put("Requests/"+mCurrent_user.getUid()+"/"+user_id,null);
                 mRootRef.updateChildren(decMap, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                         if (databaseError==null){
                             mProfileSendReqBtn.setEnabled(true);
                             mCurrent_state="not_friends";
-                            mProfileSendReqBtn.setText("Send Friend Request");
+                            mProfileSendReqBtn.setText("Arkadaslik isteği gönder");
 
                             mDeclineBtn.setVisibility(View.INVISIBLE);
                             mDeclineBtn.setEnabled(false);
