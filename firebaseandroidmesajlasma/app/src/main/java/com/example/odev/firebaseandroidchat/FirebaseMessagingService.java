@@ -7,9 +7,7 @@ import android.support.v4.app.NotificationCompat;
 
 import com.google.firebase.messaging.RemoteMessage;
 
-/**
- * Created by User on 19.12.2017.
- */
+
 
 public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService{
 
@@ -24,7 +22,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
         NotificationCompat.Builder mBuilder=
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setSmallIcon(R.mipmap.logo)
                         .setContentTitle(notification_tittle)
                         .setContentText(notification_message);
 

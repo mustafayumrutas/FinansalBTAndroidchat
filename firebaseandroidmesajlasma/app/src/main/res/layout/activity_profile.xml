@@ -8,24 +8,13 @@
     tools:context="com.example.odev.firebaseandroidchat.ProfileActivity">
 
     <TextView
-        android:id="@+id/profile_totalFriends"
+        android:id="@+id/profile_displayName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/profile_send_req_btn"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:text="Total Friends"
-        android:textColor="@color/colorAccent"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/profile_displayName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/profile_totalFriends"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="121dp"
-        android:text="Display Name"
+        android:text="Kullanıcı Adı"
         android:textColor="@color/colorAccent"
         android:textSize="26sp" />
 
@@ -45,8 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/profile_image"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:text="Current User Status"
+        android:layout_marginTop="60dp"
+        android:text="Durum"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
         android:textSize="16sp" />
@@ -59,7 +48,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:background="@color/colorAccent"
-        android:text="SEND FRIEND REQUEST"
+        android:text="Arkadaslik istegi Gönder"
         android:textColor="@color/common_google_signin_btn_text_dark_default" />
 
     <Button
@@ -69,7 +58,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@color/colorAccent"
-        android:text="Decline Friend Request"
+        android:text="Arkadaslik istegini reddet"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textColorLink="@color/colorAccent" />
 

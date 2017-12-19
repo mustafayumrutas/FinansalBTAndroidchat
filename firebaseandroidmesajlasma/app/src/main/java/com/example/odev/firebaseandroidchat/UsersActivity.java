@@ -8,9 +8,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -23,8 +25,10 @@ public class UsersActivity extends AppCompatActivity {
     public Toolbar mToolbar;
 
     private RecyclerView mUserslist;
+    private FirebaseAuth Auth;
 
     private DatabaseReference mUsersDatabase;
+    private DatabaseReference mOthers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,7 @@ public class UsersActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mUsersDatabase= FirebaseDatabase.getInstance().getReference().child("Users"); // Burada databasede Kullanicilar nasil kayitli olduklarina bakilmali
-
+        Auth=FirebaseAuth.getInstance();
 
 
         mUserslist = (RecyclerView) findViewById(R.id.users_list);
@@ -51,7 +55,8 @@ public class UsersActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
+        Auth = FirebaseAuth.getInstance();
+        mOthers = FirebaseDatabase.getInstance().getReference().child("Users");
         FirebaseRecyclerAdapter<Users,UsersViewHolder> firebaseRecyclerAdapter= new FirebaseRecyclerAdapter<Users, UsersViewHolder>(
 
                 Users.class,
@@ -64,23 +69,26 @@ public class UsersActivity extends AppCompatActivity {
             @Override
             protected void populateViewHolder(UsersViewHolder usersViewHolder, Users users, int position) {
 
-                usersViewHolder.setDisplayName(users.getName());
-                usersViewHolder.setUserStatus(users.getStatus());
-                usersViewHolder.setUserImage(users.getThumb_image(),getApplicationContext());
 
-                final String user_id = getRef(position).getKey();
+                    usersViewHolder.setDisplayName(users.getName());
+                    usersViewHolder.setUserStatus(users.getStatus());
+                    usersViewHolder.setUserImage(users.getThumb_image(), getApplicationContext());
 
-                usersViewHolder.mView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                    final String user_id = getRef(position).getKey();
+                    if(!Auth.getCurrentUser().getUid().equals(mOthers.child(user_id).getKey()))
+                    {
+                    usersViewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
-                        Intent profileIntent =new Intent(UsersActivity.this,ProfileActivity.class);
-                        profileIntent.putExtra("user_id",user_id);
-                        startActivity(profileIntent);
+                            Intent profileIntent = new Intent(UsersActivity.this, ProfileActivity.class);
+                            profileIntent.putExtra("user_id", user_id);
+                            startActivity(profileIntent);
+
+                        }
+                    });
 
                     }
-                });
-
             }
         };
 
