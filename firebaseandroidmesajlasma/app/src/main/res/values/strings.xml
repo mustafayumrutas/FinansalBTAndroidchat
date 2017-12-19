@@ -1,16 +1,16 @@
 <resources>
-    <string name="app_name">Firebaseandroidchat</string>
+    <string name="app_name">ChatFire</string>
     <string name="uye_ol">Uye ol</string>
     <string name="email">Email</string>
-    <string name="password">Password</string>
+    <string name="password">Şifre</string>
     <string name="hesap_olustur">hesap olustur</string>
-    <string name="display_name">Display Name</string>
+    <string name="display_name">Kullanıcı Adı</string>
     <string name="cikis_yap">Cikis yap</string>
     <string name="hesab_na_giris_yap">Hesabına Giris Yap</string>
     <string name="giris_yap">Giris Yap</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Boş Fragman</string>
     <string name="durumu_de_i_tir">Durumu Değiştir</string>
-    <string name="merhaba_firebase_chat_app_kullan_yorum">Merhaba Firebase chat app kullanıyorum</string>
+    <string name="merhaba_firebase_chat_app_kullan_yorum">Merhaba Chatfire kullanıyorum</string>
 </resources>

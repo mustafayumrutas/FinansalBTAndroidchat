@@ -100,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                     userMap.put("name",display_name);
                     userMap.put("status","Merhaba Firebasechatappi kullanıyorum");
                     userMap.put("image","default");
-                    userMap.put("thump_image","default");
+                    userMap.put("thumb_image","default");
                     userMap.put("device_token",deviceToken);
 
                     mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {

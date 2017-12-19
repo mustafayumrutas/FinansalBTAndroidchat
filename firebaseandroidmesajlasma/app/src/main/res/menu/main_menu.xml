@@ -10,5 +10,5 @@
         android:title="Hesap Ayarlari" />
     <item
         android:id="@+id/main_all_btn"
-        android:title="All Users" />
+        android:title="Bütün Kullanıcılar" />
 </menu>
