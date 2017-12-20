@@ -1,8 +1,5 @@
 package com.example.odev.firebaseandroidchat;
 
-/**
- * Created by User on 19.12.2017.
- */
 
 public class Friends {
     public String date;

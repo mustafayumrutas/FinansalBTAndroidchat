@@ -1,9 +1,5 @@
 package com.example.odev.firebaseandroidchat;
 
-/**
- * Created by Proxima 7 on 12/12/2017.
- */
-
 public class Users {
     public String name;
     public String image;

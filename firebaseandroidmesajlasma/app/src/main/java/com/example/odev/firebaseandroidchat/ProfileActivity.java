@@ -52,13 +52,13 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mRootRef.child("Users").child(mCurrent_user.getUid()).child("online").setValue(true);
+
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        mRootRef.child("Users").child(mCurrent_user.getUid()).child("online").setValue(false);
+
     }
 
     @Override
